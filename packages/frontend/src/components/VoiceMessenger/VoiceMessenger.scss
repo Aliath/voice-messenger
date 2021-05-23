@@ -80,17 +80,6 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      animation: opacity 2s infinite forwards;
-
-      @keyframes opacity {
-        0% {
-          opacity: 100%;
-        }
-      
-        100% {
-          opacity: 0;
-        }
-      }
     }
   }
 }
