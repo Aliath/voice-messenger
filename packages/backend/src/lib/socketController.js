@@ -32,8 +32,8 @@ const updateOnlineUsers = () => {
 const sendAllMessagesToUser = async (client) => {
   const db = await getDatabase();
   try {
-    const result = await db.collection('messages').find().sort({ _id: -1 }).limit(50).toArray().reverse();
-    client.emit('update::messages', [...result].map((({ message, ...data }) => ({
+    const result = await db.collection('messages').find().sort({ _id: -1 }).limit(50).toArray();
+    client.emit('update::messages', [...result].reverse().map((({ message, ...data }) => ({
       message: message.buffer,
       ...data,
     }))));

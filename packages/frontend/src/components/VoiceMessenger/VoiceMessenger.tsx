@@ -8,6 +8,7 @@ import { ReactComponent as MicrophoneIcon } from 'assets/icons/microphone-icon.s
 import './VoiceMessenger.scss';
 import { ServerContext } from 'contexts/ServerContext';
 import { OnlineUsersCard } from 'components/OnlineUsersCard';
+import { Loader } from 'components/Loader';
 
 export const VoiceMessenger: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -38,9 +39,15 @@ export const VoiceMessenger: React.FC = () => {
       <OnlineUsersCard />
       <Card className="voice-messenger">
         <ScrollableContent ref={scrollContentRef} className="voice-messenger__scroll-wrapper">
-          <div className="voice-messenger__content">
-            {messages.map((message) => <VoiceMessage key={message.sentAt} message={message} />)}
-          </div>
+          {messages.length === 0 ? (
+            <div className="voice-messenger__loader-wrapper">
+              <Loader />
+            </div>
+          ) : (
+            <div className="voice-messenger__content">
+              {messages.map((message) => <VoiceMessage key={message.sentAt} message={message} />)}
+            </div>
+          )}
         </ScrollableContent>
         <div className="voice-messenger__bottom">
           <button type="button" className="voice-messenger__record" onClick={onRecord}>
