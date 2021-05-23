@@ -59,7 +59,9 @@ export const ServerContextProvider: React.FC = ({ children }) => {
     });
 
     connection.on('auth/request::ok', () => {
-      setConnected(true);
+      setTimeout(() => {
+        setConnected(true);
+      }, 750);
     });
 
     connection.on('update::onlineUsers', (onlineUsers) => {
