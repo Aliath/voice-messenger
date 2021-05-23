@@ -8,6 +8,10 @@ const handlersQueue = [];
     const client = new MongoClient(process.env.MONGO_URI);
     await client.connect();
     database = client.db('voice-messenger');
+
+    if (handlersQueue.length) {
+      handlersQueue.forEach((resolver) => resolver(database));
+    }
   } catch (error) {
     console.error('MongoDB connection failed:', error);
   }
@@ -32,7 +36,7 @@ const updateOnlineUsers = () => {
 const sendAllMessagesToUser = async (client) => {
   const db = await getDatabase();
   try {
-    const result = await db.collection('messages').find().sort({ _id: -1 }).limit(50).toArray();
+    const result = await db.collection('messages').find().sort({ _id: -1 }).limit(25).toArray();
     client.emit('update::messages', [...result].reverse().map((({ message, ...data }) => ({
       message: message.buffer,
       ...data,
