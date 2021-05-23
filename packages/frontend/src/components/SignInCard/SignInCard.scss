@@ -1,0 +1,25 @@
+.signin-card {
+  width: 480px;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 2.8rem;
+  }
+
+  &__intro {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  &__input {
+    margin-top: 12px;
+    width: 60%;
+    align-self: center;
+    text-align: center;
+  }
+}

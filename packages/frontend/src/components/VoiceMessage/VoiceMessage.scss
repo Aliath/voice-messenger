@@ -1,0 +1,57 @@
+.voice-message {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  animation: message-in 0.25s;
+  transform-origin: top left;
+
+  &--owned {
+    flex-direction: row-reverse;
+    transform-origin: top right;
+  }
+
+  &__author {
+    --size: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size);
+    min-width: var(--size);
+    height: var(--size);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    font-size: 2.8rem;
+    position: relative;
+    text-transform: capitalize;
+  }
+
+  &__player {
+    margin: 0 20px;
+    flex: 1 1 auto;
+    max-width: 260px;
+  }
+}
+
+@keyframes message-in {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.voice-message-tooltip {
+  border-radius: 4px;
+  background-color: #202020;
+  padding: 8px 12px;
+  font-size: 1.4rem;
+  z-index: 1;
+  text-transform: capitalize;
+}

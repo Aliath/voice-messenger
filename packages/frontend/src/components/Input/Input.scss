@@ -1,0 +1,16 @@
+.input {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+  padding: 4px;
+  color: #f1f1f1;
+  font-size: 2rem;
+  padding: 8px 12px;
+  min-height: 40px;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+  font-variant: small-caps;
+  text-transform: lowercase;
+}

@@ -1,0 +1,96 @@
+.voice-messenger-container {
+  width: 80%;
+  height: 80%;
+  max-height: 640px;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+}
+
+.voice-messenger {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: auto;
+
+  &__content {
+    padding-right: 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  &__record {
+    --size: 48px;
+
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    width: var(--size);
+    height: var(--size);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 200%;
+    min-width: 200%;
+    align-self: flex-start;
+    transition: transform 0.25s ease;
+
+    &--recording {
+      transform: translateX(-50%);
+    }
+  }
+
+  &__microphone-icon {
+    max-height: 60%;
+    height: auto;
+    min-width: 50%;
+  }
+
+  &__recording-icon {
+    min-width: 50%;
+    position: relative;
+
+    &::before {
+      --size: 16px;
+
+      content: "";
+      width: var(--size);
+      height: var(--size);
+      background-color: #b00;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: opacity 2s infinite forwards;
+
+      @keyframes opacity {
+        0% {
+          opacity: 100%;
+        }
+      
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

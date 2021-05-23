@@ -1,0 +1,17 @@
+{
+  
+  "name": "voice-messenger",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "lerna": "^4.0.0",
+    "@voice-messenger/frontend": "file:packages/frontend",
+    "@voice-messenger/backendend": "file:packages/backend"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "heroku:start": "lerna run heroku:start"
+  }
+}
