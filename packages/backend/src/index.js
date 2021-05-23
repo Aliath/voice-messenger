@@ -9,6 +9,11 @@ expressServer.use(cors());
 expressServer.use(express.static(path.resolve('../frontend/build')))
 
 const httpServer = expressServer.listen(process.env.PORT || 8080);
-const socketServer = socketIO(httpServer);
+const socketServer = socketIO(httpServer, {
+  cors: {
+    origin: '*',
+    methods: ["GET", "POST", "UPDATE"]
+  }
+});
 socketController(socketServer);
 
