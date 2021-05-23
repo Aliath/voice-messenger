@@ -5,13 +5,14 @@ import { VoiceContext } from 'contexts/VoiceContext';
 import { Card } from 'components/Card';
 import { VoiceMessage } from 'components/VoiceMessage';
 import { ReactComponent as MicrophoneIcon } from 'assets/icons/microphone-icon.svg';
-import './VoiceMessenger.scss';
 import { ServerContext } from 'contexts/ServerContext';
 import { OnlineUsersCard } from 'components/OnlineUsersCard';
 import { Loader } from 'components/Loader';
+import './VoiceMessenger.scss';
 
 export const VoiceMessenger: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
+  const [isFullyScrolled, setIsFullyScrolled] = useState(true);
   const scrollContentRef = useRef(null);
   const { startRecording, stopRecording } = useContext(VoiceContext);
   const { messages } = useContext(ServerContext);
@@ -29,16 +30,21 @@ export const VoiceMessenger: React.FC = () => {
   };
 
   useEffect(() => {
-    if (scrollContentRef.current) {
+    if (scrollContentRef.current && isFullyScrolled) {
       (scrollContentRef.current! as any).scrollToBottom();
     }
-  }, [messages, scrollContentRef]);
+  }, [isFullyScrolled, messages, scrollContentRef]);
+
+  const handleScroll = (event: React.UIEvent<HTMLElement>) => {
+    const target = event.target as HTMLElement;
+    setIsFullyScrolled(target.scrollHeight === target.scrollTop +target.offsetHeight)
+  };
 
   return (
     <div className="voice-messenger-container">
       <OnlineUsersCard />
       <Card className="voice-messenger">
-        <ScrollableContent ref={scrollContentRef} className="voice-messenger__scroll-wrapper">
+        <ScrollableContent ref={scrollContentRef} onScroll={handleScroll} className="voice-messenger__scroll-wrapper">
           {messages.length === 0 ? (
             <div className="voice-messenger__loader-wrapper">
               <Loader />
