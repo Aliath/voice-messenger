@@ -49,7 +49,7 @@ export const ServerContextProvider: React.FC = ({ children }) => {
       return () => {}
     }
 
-    const connection = socketIO(process.env.SOCKET_URL || 'http://localhost:8080', {
+    const connection = socketIO(process.env.REACT_APP_SOCKET_URL || 'http://localhost:8080', {
       timeout: 60 * 1000,
     });
     setConnection(connection);
