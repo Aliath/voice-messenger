@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import clsx from 'clsx';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import { VoiceMessagePlayer } from 'components/VoiceMessagePlayer';
@@ -14,8 +14,10 @@ export const VoiceMessage: React.FC<VoiceMessageProps> = ({ message }) => {
   const { nickName } = useContext(ServerContext);
   const { author } = message;
   const owned = author === nickName;
-  const audioBlob = new Blob([message.message], { 'type' : 'audio/ogg; codecs=opus' });
-
+  const audioBlob = useMemo(
+    () => new Blob([message.message], { 'type' : 'audio/ogg; codecs=opus' }),
+    [message.message]
+  );
 
   const {
     getTooltipProps,
