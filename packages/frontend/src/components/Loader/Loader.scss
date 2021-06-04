@@ -7,6 +7,11 @@ $time: 1.6s;
     stroke-dashoffset: 0;
     animation: anim $time linear infinite;
   }
+
+  &__text {
+    margin-top: 0px;
+    text-align: center;
+  }
 }
 
 @keyframes anim {

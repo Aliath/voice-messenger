@@ -47,7 +47,7 @@ export const VoiceMessenger: React.FC = () => {
         <ScrollableContent ref={scrollContentRef} onScroll={handleScroll} className="voice-messenger__scroll-wrapper">
           {messages.length === 0 ? (
             <div className="voice-messenger__loader-wrapper">
-              <Loader />
+              <Loader text="Fetching messages" />
             </div>
           ) : (
             <div className="voice-messenger__content">
